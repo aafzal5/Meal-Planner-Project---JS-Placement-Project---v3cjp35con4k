@@ -1,1 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #E3E2DF;
+}
+
+nav {
+    background-color: #5D001E;
+    color: #E3E2DF;
+    font-size: larger;
+    font-family: 'Poppins', cursive;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+}
+
+h3{
+    font-weight: normal;
+    width: 300px;
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding-bottom: 5px;
+}
+
+label{
+    margin-right: 10px;
+    font-weight: bolder;
+    font-size: large;
+}
+
+input {
+    border: none;
+    background-color: rgb(199, 194, 205);
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+    outline: none;
+    width: 7rem;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+}
+
+option{
+    font-size: medium;
+    font-weight: normal;
+    text-align: center;
+    width: 7rem;
+}
+
+select{
+    font-weight: bold;
+    font-size: medium;
+}
+
+.heading {
+    color: #E3E2DF;
+    text-align: center;
+    font-weight: normal;
+    font-family: 'Poppins';
+    margin: 10px;
+}
+
+.input-section {
+    text-align: center;
+    font-family: 'Poppins';
+    margin-bottom: 0;
+}
+
+.input-1 {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 25px;
+}
+
+.input-2 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.generate-meal-btn {
+    margin: 5px 0px 15px 0px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    font-size: large;
+    background-color: #5D001E;
+    color: #E3E2DF;
+}
+.generate-meal-btn:hover{
+    color: #E3E2DF;
+    background-color: #9A1750;
+    outline: none;
+}
+
+.generate-meal-btn:focus{
+    background-color: #9A1750;
+}
+
+.gender{
+    border: none;
+    background-color: rgb(199, 194, 205);
+    padding: 8px;
+    border-radius: 0.7rem;
+    outline: none;
+}
+
+.activity{
+    border: none;
+    background-color: rgb(199, 194, 205);
+    padding: 8px;
+    border-radius: 0.7rem;
+    outline: none;
+}
+
+.meal-section{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.meal-card {
+    margin: 0 50px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .meal-card h3 {
+    text-align: center;
+    background-color: #5D001E;
+    color: #E3E2DF;
+  }
+
+  .meal-card span {
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin: 5px 5px 30px 5px;
+    height: 350px;
+    width: 305px;
+  }
+
+  .meal-card span img {
+    width: 300px;
+    height: 220px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  button {
+    background-color: #5D001E;
+    color: #E3E2DF;
+    border: none;
+    border-radius: 10px;
+    margin-top: 3%;
+    padding: 8px 15px;
+    margin-bottom: 4%;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.8s;
+    font-size: medium;
+  }
+
+  button:hover{
+    background-color: #9A1750;
+  }
+
+  button:focus{
+    background-color: #9A1750;
+  }
+
+  .equipment h2,
+  .ingrediants h2 {
+    margin: 0;
+  }
+
+  .dish {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 30px;
+  }
+
+  .ingrediants,
+  .equipment {
+    margin: 30px;
+    width: 400px;
+    padding: 20px;
+  }
+  
+  .steps {
+    padding: 20px;
+    margin: 0 30px;
+  }
+
+  .recipe {
+    padding: 50px;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+  }
+
+  .recipe h2 {
+    margin: 0 20px 20px 20px;
+    color: #5D001E;
+  }
+
+/* Responsive Design */
+/* For Mobile Devices */
+@media only screen and (max-width: 600px) {
+    .meal-card{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .meal-section{
+      visibility: hidden;
+    }
+    .input-1,.input-2,.dish{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    span{
+        margin-bottom: 3px;
+    }
+
+    input,select{
+      margin: 5px;
+    }
+        label input {
+        display: flex;
+        align-items: flex-start;
+    }
+  }
+
+  /* For Tablets */
+  @media only screen and (max-width: 768px){
+    .meal-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .meal-section{
+        visibility: hidden;
+      }
+      .input-1,.input-2,.dish{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      span{
+          margin-bottom: 3px;
+      }
+  
+      input,select{
+        margin: 5px;
+      }
+          label input {
+          display: flex;
+          align-items: flex-start;
+      }
+  }
