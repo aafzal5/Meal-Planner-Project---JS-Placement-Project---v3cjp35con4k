@@ -234,6 +234,10 @@ select{
       justify-content: center;
     }
 
+    .generate-meal-btn{
+      margin: 15px;
+    }
+
     span{
         margin-bottom: 3px;
     }
