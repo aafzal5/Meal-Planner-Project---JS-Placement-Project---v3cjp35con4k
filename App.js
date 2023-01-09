@@ -80,6 +80,8 @@ const calCalories = (bmiValue, activity)=> {
 
 generateBtn.addEventListener('click', generateFn);
 
+const equipmentArray = [];
+
 const createMealCardsFn = (data) => {
     backgroundElmnt.style.display = "block";
     recipeElmnt.style.display = "block";
@@ -111,10 +113,13 @@ const createMealCardsFn = (data) => {
                 for(let i=0;i<apiEqipment.length;i++){
                     let apiEqipment2 = apiEqipment[i].equipment;
                     for(let k=0;k<apiEqipment2.length;k++){
+                        if(!equipmentArray.includes(apiEqipment2[k].name)){
+                            equipmentArray.push(apiEqipment2[k].name);
                         let para = document.createElement("li");
                         let newPara = apiEqipment2[k].name;
                         para.innerHTML = newPara;
                         equipmentsElmnt.appendChild(para);
+                        }
                     }
                 }
             }
@@ -143,5 +148,6 @@ const createMealCardsFn = (data) => {
     item.appendChild(getRecipeBtn);
     cardElmnt.appendChild(item);
 };
+
 
 
