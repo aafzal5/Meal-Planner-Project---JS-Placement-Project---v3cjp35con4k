@@ -269,7 +269,20 @@ select{
 /* Responsive Design */
 /* For Mobile Devices */
 @media only screen and (max-width: 600px) {
-    .meal-card{
+  /* for dummy card */
+  .dummy-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dummy-card div{
+    margin-bottom: 5px;
+}
+
+    
+  /* This is for the generated meal card */
+  .meal-card{
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -302,6 +315,18 @@ select{
 
   /* For Tablets */
   @media only screen and (max-width: 768px){
+    /* dummy card */
+    .dummy-card{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .dummy-card div{
+      margin-bottom: 5px;
+  }
+    
+    /*Generated Card main card  */
     .meal-card{
         display: flex;
         flex-direction: column;
@@ -317,7 +342,7 @@ select{
       }
   
       span{
-          margin-bottom: 3px;
+          margin-bottom: 5px;
       }
   
       input,select{
