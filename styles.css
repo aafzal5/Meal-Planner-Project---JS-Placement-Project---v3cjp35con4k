@@ -149,8 +149,8 @@ select{
     align-items: center;
     border-radius: 12px;
     text-align: center;
-    border: 2px solid rgb(255, 255, 255);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
     transition: 0.7s;
     margin: 5px 5px 30px 5px;
     height: 350px;
@@ -187,8 +187,8 @@ select{
     align-items: center;
     border-radius: 12px;
     text-align: center;
-    border: 2px solid rgb(255, 255, 255);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
     transition: 0.7s;
     margin: 5px 5px 30px 5px;
     height: 350px;
