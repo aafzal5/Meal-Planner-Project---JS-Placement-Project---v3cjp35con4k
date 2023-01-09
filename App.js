@@ -10,6 +10,7 @@ const weightElmnt = document.querySelector('.weight');
 const ageElmnt = document.querySelector('.age');
 const genderElmnt = document.querySelector('.gender');
 const activityElmnt = document.querySelector('.activity');
+const dummyCardElmnt = document.querySelector('.dummy-card');
 const cardSectionElmnt = document.querySelector('.card-section');
 const cardElmnt = document.querySelector('.meal-card');
 const ingredientsElmnt = document.querySelector('.ingredients');
@@ -41,7 +42,7 @@ const apiRecipeData = async (meals)=> {
         const recipeRes = await response.json();
         setTimeout(() => {
             createMealCardsFn(recipeRes);
-        }, 1000);
+        }, 725);
     });
 };
 
@@ -52,6 +53,11 @@ const generateFn = ()=>{
     let age = ageElmnt.value;
     let gender = genderElmnt.value;
     let activity = activityElmnt.value;
+
+    if(height ==='' || weight ==='' || age ===''){
+        return alert('Please provide valid inputs!');
+    }
+
     let bmiValue = bmi(height,weight, age, gender);
     let calories = calCalories(bmiValue,activity).toFixed(2);
     // console.log('calories = ', calories);
@@ -61,10 +67,8 @@ const generateFn = ()=>{
 const bmi = (height, weight, age, gender)=> {
     if(gender === 'female'){
         return 655.1 + (9.563 *  weight ) + (1.850 * height) - (4.676 * age);
-    }else if(gender === 'male'){
-        return 66.47 + (13.75 *  weight ) + (5.003 * height) - (6.755 * age);
     }else{
-        return alert('Please provide valid inputs');
+        return 66.47 + (13.75 *  weight ) + (5.003 * height) - (6.755 * age);
     }
 };
 
@@ -83,6 +87,7 @@ generateBtn.addEventListener('click', generateFn);
 const equipmentArray = [];
 
 const createMealCardsFn = (data) => {
+    dummyCardElmnt.style.display = "none";
     backgroundElmnt.style.display = "block";
     recipeElmnt.style.display = "block";
     const item = document.createElement("span");
@@ -98,44 +103,54 @@ const createMealCardsFn = (data) => {
         ingredientsElmnt.innerHTML = `<h2>Ingredients</h2>`;
     
         let apiIngredients = data.extendedIngredients;
-    
-            for(let i=0; i<apiIngredients.length; i++){
-                let para = document.createElement("li");
-                let newPara = apiIngredients[i].original;
-                para.innerHTML = newPara;
-                ingredientsElmnt.appendChild(para);
-            }
+
+        for(let i=0; i<apiIngredients.length; i++) {
+            let para = document.createElement("li");
+            let newPara = apiIngredients[i].original;
+            para.innerHTML = newPara;
+            ingredientsElmnt.appendChild(para);
+         }
+
         equipmentsElmnt.innerHTML = " ";
         equipmentsElmnt.innerHTML = `<h2>Equipments</h2>`;
-    
-            for(let j=0; j<data.analyzedInstructions.length; j++){
-                let apiEqipment = data.analyzedInstructions[j].steps;
-                for(let i=0;i<apiEqipment.length;i++){
-                    let apiEqipment2 = apiEqipment[i].equipment;
-                    for(let k=0;k<apiEqipment2.length;k++){
-                        if(!equipmentArray.includes(apiEqipment2[k].name)){
-                            equipmentArray.push(apiEqipment2[k].name);
-                        let para = document.createElement("li");
-                        let newPara = apiEqipment2[k].name;
-                        para.innerHTML = newPara;
-                        equipmentsElmnt.appendChild(para);
-                        }
-                    }
-                }
-            }
+
+        let instructions = data.analyzedInstructions;
+        // console.log("Instrucions: ", instructions);
+        let recipeSteps = [];
+
+        for(let j=0; j<instructions.length; j++){
+            recipeSteps = instructions[j].steps;
+        }  
+        // console.log("recipeSteps: ", recipeSteps);
+
+        let recipeEquipments = [];
+
+        for(let i=0;i<recipeSteps.length;i++){
+            recipeEquipments = recipeSteps[i].equipment;
+        }    
+        // console.log("recipeEquipments: ", recipeEquipments);
+
+        for(let k=0;k<recipeEquipments.length;k++){
+            if(!equipmentArray.includes(recipeEquipments[k].name)){
+                equipmentArray.push(recipeEquipments[k].name);
+                let para = document.createElement("li");
+                let newPara = recipeEquipments[k].name;
+                para.innerHTML = newPara;
+                equipmentsElmnt.appendChild(para);
+            }                   
+        }
         stepsElmnt.innerHTML = " ";
         stepsElmnt.innerHTML = `<h2>Steps</h2>`;
-            let ol = document.createElement("ol");
-            for(let j=0;j<data.analyzedInstructions.length;j++){
-            let apiStep = data.analyzedInstructions[j].steps
-            for(let i=0;i<apiStep.length;i++){
-                let para = document.createElement("li");
-                let newPara = apiStep[i].step;
-                para.innerHTML = newPara;
-                ol.appendChild(para);
-                stepsElmnt.appendChild(ol);
-            }
-        }   
+        let ol = document.createElement("ol");
+            
+        for(let i=0;i<recipeSteps.length;i++){
+            let para = document.createElement("li");
+            let newPara = recipeSteps[i].step;
+            para.innerHTML = newPara;
+            ol.appendChild(para);
+            stepsElmnt.appendChild(ol);
+        }
+
     };
 
     getRecipeBtn.setAttribute("class" , "get-btn");
