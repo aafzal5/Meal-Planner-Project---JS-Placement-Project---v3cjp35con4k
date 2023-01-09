@@ -18,8 +18,9 @@ nav {
     font-size: larger;
     font-family: 'Poppins', cursive;
     padding: 7px;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    position: sticky;
+    top: 0;
 }
 
 h3{
