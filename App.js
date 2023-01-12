@@ -115,13 +115,15 @@ const createMealCardsFn = (data) => {
         equipmentsElmnt.innerHTML = `<h2>Equipments</h2>`;
 
         let instructions = data.analyzedInstructions;
-        // console.log("Instrucions: ", instructions);
+
+        console.log("Instrucions: ", instructions);
+
         let recipeSteps = [];
 
         for(let j=0; j<instructions.length; j++){
             recipeSteps = instructions[j].steps;
         }  
-        // console.log("recipeSteps: ", recipeSteps);
+        console.log("recipeSteps: ", recipeSteps);
 
         let recipeEquipments = [];
 
@@ -129,8 +131,10 @@ const createMealCardsFn = (data) => {
             recipeEquipments = recipeSteps[i].equipment;
         }    
         // console.log("recipeEquipments: ", recipeEquipments);
+        console.log("Equipments: ",recipeEquipments);
 
         for(let k=0;k<recipeEquipments.length;k++){
+            //preventind the DOM to repeating equipments.
             if(!equipmentArray.includes(recipeEquipments[k].name)){
                 equipmentArray.push(recipeEquipments[k].name);
                 let para = document.createElement("li");
@@ -138,6 +142,9 @@ const createMealCardsFn = (data) => {
                 para.innerHTML = newPara;
                 equipmentsElmnt.appendChild(para);
             }                   
+        }
+        if(equipmentArray.length === 0){
+            equipmentsElmnt.innerHTML = " ";
         }
         stepsElmnt.innerHTML = " ";
         stepsElmnt.innerHTML = `<h2>Steps</h2>`;
