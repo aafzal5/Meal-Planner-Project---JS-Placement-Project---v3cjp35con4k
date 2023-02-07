@@ -26,6 +26,7 @@ const recipeBtn = document.querySelector('.get-recipe-btn');
 const apiMealData = async (calories)=> {
     const response = await fetch(`https://api.spoonacular.com/mealplanner/generate?apiKey=${apiKey}&timeFrame=day&targetCalories=${calories}`);
     const result = await response.json();
+    console.log(result);
     await apiRecipeData(result.meals);
 };
 
@@ -79,6 +80,8 @@ const calCalories = (bmiValue, activity)=> {
         return bmiValue * 1.55;
     }else if (activity === 'active') {
         return bmiValue * 1.725;
+    }else{
+        return bmiValue * 1.978;
     }
 };
 
